@@ -1,6 +1,6 @@
 import sys
 import os
-os.environ["TRANSFORMERS_CACHE"]="/mnt/bn/arnold-yy-audiodata/pre_load_models"
+# os.environ["TRANSFORMERS_CACHE"]="/mnt/bn/arnold-yy-audiodata/pre_load_models"
 sys.path.append("src")
 import torch
 import torch.nn as nn
@@ -44,8 +44,10 @@ class FlanT5HiddenState(nn.Module):
         if self.all_pos:
             self.position_embedding = self.add_position_embedding(self.return_length*self.emb_num,1024)
 
-        self.tokenizer = AutoTokenizer.from_pretrained(self.text_encoder_name,cache_dir = "/mnt/bn/arnold-yy-audiodata/pre_load_models")
-        self.model = T5EncoderModel.from_pretrained(self.text_encoder_name,cache_dir = "/mnt/bn/arnold-yy-audiodata/pre_load_models")
+        # self.tokenizer = AutoTokenizer.from_pretrained(self.text_encoder_name,cache_dir = "/mnt/bn/arnold-yy-audiodata/pre_load_models")
+        # self.model = T5EncoderModel.from_pretrained(self.text_encoder_name,cache_dir = "/mnt/bn/arnold-yy-audiodata/pre_load_models")
+        self.tokenizer = AutoTokenizer.from_pretrained(self.text_encoder_name)
+        self.model = T5EncoderModel.from_pretrained(self.text_encoder_name)
         self.input_caption = input_caption
         if self.model:
             if(freeze_text_encoder):

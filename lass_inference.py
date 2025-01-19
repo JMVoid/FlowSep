@@ -132,8 +132,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-m",
         "--no_mixed",
-        type=bool,
-        action='store_false',
+        # type=bool,
+        action='store_true',
         help="saving the mixed waveform as well",
     )
     
